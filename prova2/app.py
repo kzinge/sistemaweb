@@ -6,7 +6,9 @@ conn = Conexao('escola.db') #Define nossa conexão com o banco, lembrar que o no
 
 @app.route('/') #Define a primeira rota
 def index():
-    return render_template('index.html')
+    alunos = conn.cursor.execute('SELECT * FROM tb_alunos').fetchall()
+    return render_template('index.html', ab = alunos)
+    
 
 @app.route('/cadastro', methods=['POST', 'GET']) #Define a rota cadastro que pode ser GET e POST
 def cadastrar():
@@ -27,7 +29,13 @@ def cadastrar():
 @app.route('/alunos') #Define a rota alunos
 def view_alunos():
     #Monstrando as informações do banco
-    alunos = conn.cursor.execute('SELECT alu_nome, alu_email, alu_telefone FROM tb_alunos').fetchall()
+    alunos = conn.cursor.execute('SELECT * FROM tb_alunos').fetchall()
 
     return render_template('view.html', alunos = alunos)
 #esse 'alunos = alunos': o primeiro alunos é a variável que irei usar em view.html. o segundo é o valor que irei atribuir a ela.
+
+@app.route('/<int:alu_id>/deletar', methods= ['POST'])
+def deletar(alu_id):
+    dell = alu_id
+    del_aluno = conn.cursor.execute('DELETE FROM tb_alunos WHERE alu_id = (?)', (dell,))
+    return redirect(url_for('view_alunos'))

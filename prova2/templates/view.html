@@ -15,13 +15,18 @@
     {% for aluno in alunos %}
 
     <li>
-        Nome: {{aluno['alu_nome']}} <!--Aqui irei exibir o nome do aluno-->
+        Nome: {{aluno['alu_nome']}}
+        <!--Aqui irei exibir o nome do aluno-->
     </li>
     <li>
-        E-mail: {{aluno['alu_email']}} <!--Aqui irei exibir o email do aluno-->
+        E-mail: {{aluno['alu_email']}}
+         <!--Aqui irei exibir o email do aluno-->
     </li>
     <li>
-        Telefone: {{aluno['alu_telefone']}} <!--Aqui irei exibir o telefone do aluno-->
+        Telefone: {{aluno['alu_telefone']}}
+        <form action="{{url_for('deletar', alu_id = aluno['alu_id'])}}" method="post">
+            <input type="submit" value="Cancelar Matrícula">
+        </form> <!--Aqui irei exibir o telefone do aluno-->
     </li>
 
     {% endfor %}
