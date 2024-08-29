@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Alunos{% endblock %}
+
+{% block nav %}
+<a href="{{url_for('index')}}">Início</a>
+<a href="{{url_for('cadastrar')}}">Cadastrar</a>
+{% endblock %}
+
+{% block conteudo %}
+<h1>Alunos Cadastrados nesta escola:</h1>
+
+<ul>
+    {% for aluno in alunos %}
+
+    <li>
+        Nome: {{aluno['alu_nome']}}
+    </li>
+    <li>
+        E-mail: {{aluno['alu_email']}}
+    </li>
+    <li>
+        Telefone: {{aluno['alu_telefone']}}
+    </li>
+
+    {% endfor %}
+</ul>
+{% endblock %}

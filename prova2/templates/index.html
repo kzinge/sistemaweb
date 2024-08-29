@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Escola{% endblock %}
+
+{% block nav %}
+<a href="{{url_for('cadastrar')}}">Cadastrar</a>
+<a href="{{url_for('view_alunos')}}">Consultar Alunos</a>
+{% endblock %}
+
+{% block conteudo %}
+<h1>Olá! Bem-vindo. O que deseja fazer hoje?</h1>
+{% endblock %}

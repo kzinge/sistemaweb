@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <span>Escreva nova tarefa</span>
+        <form action="{{url_for('addtask')}}" method="post">
+            <input type="text" name="addtask" id="addtask" placeholder="Nova Tarefa">
+            <input type="submit" value="Adicionar">
+        </form>
+    </div>
+
+    <div class="tarefas">
+        <ul>
+            {% for tarefa in tarefas %}
+
+            <li>
+                {{tarefa[1]}} <form action="{{url_for('deltask', task_id = tarefa[0])}}" method="post">
+                    <input type="submit" value="Apagar" name="deltask">
+                </form>
+                <form action="" method="post">
+                    inp'
+                </form>
+            </li>
+            {% endfor %}  
+        </ul>
+
+          
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Document {% endblock %}</title>
+
+    <style>
+        body{
+            font-size: 14pt;
+        }
+        .form form{
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            margin: 20px;
+        }
+
+        form input{
+            padding: 5px;
+            margin: 5px;
+        }
+
+        label{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        {% block nav %}
+        <a href="">Inicio</a>
+        <a href="">Cadastrar</a>
+        {% endblock %}
+    </nav>
+
+    <div class="conteudo">
+        {% block conteudo %}
+        {% endblock %}
+    </div>
+    
+    <div class="form">
+        {% block form %}
+        {% endblock %}
+    </div>
+</body>
+</html>

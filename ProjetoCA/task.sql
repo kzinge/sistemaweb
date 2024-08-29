@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS tb_tarefas (
+    tas_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tas_tarefa TEXT
+);

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro{% endblock %}
+
+{% block nav %}
+<a href="{{url_for('index')}}">Início</a>
+<a href="{{url_for('view_alunos')}}">Consultar Alunos</a>
+{% endblock %}
+
+{% block form %}
+<form action="" method="post">
+    <label for="alunome">Digite o nome do estudante:</label>
+    <input type="text" name="alunome" id="alunome" placeholder="Nome">
+    <label for="aluemail">Digite o e-mail do estudante:</label>
+    <input type="email" name="aluemail" id="aluemail" placeholder="E-mail">
+    <label for="alutel">Digite o telefone do estudante:</label>
+    <input type="text" name="alutel" id="alutel" placeholder="Telefone">
+    <input type="submit" value="Cadastrar">
+</form>
+{% endblock %}
+
