@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} Document {% endblock %}</title>
-
+    <!--Define um bloco para o título da página-->
     <style>
         body{
             font-size: 14pt;
@@ -28,6 +28,7 @@
 </head>
 <body>
     <nav>
+        <!--Define um bloco para o navbar-->
         {% block nav %}
         <a href="">Inicio</a>
         <a href="">Cadastrar</a>
@@ -35,11 +36,13 @@
     </nav>
 
     <div class="conteudo">
+        <!--Define um bloco para o conteudo-->
         {% block conteudo %}
         {% endblock %}
     </div>
     
     <div class="form">
+        <!--Define um bloco para o form-->
         {% block form %}
         {% endblock %}
     </div>

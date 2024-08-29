@@ -11,16 +11,17 @@
 <h1>Alunos Cadastrados nesta escola:</h1>
 
 <ul>
+    <!--É como um for que exibe coisas de uma lista-->
     {% for aluno in alunos %}
 
     <li>
-        Nome: {{aluno['alu_nome']}}
+        Nome: {{aluno['alu_nome']}} <!--Aqui irei exibir o nome do aluno-->
     </li>
     <li>
-        E-mail: {{aluno['alu_email']}}
+        E-mail: {{aluno['alu_email']}} <!--Aqui irei exibir o email do aluno-->
     </li>
     <li>
-        Telefone: {{aluno['alu_telefone']}}
+        Telefone: {{aluno['alu_telefone']}} <!--Aqui irei exibir o telefone do aluno-->
     </li>
 
     {% endfor %}
