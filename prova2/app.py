@@ -39,3 +39,18 @@ def deletar(alu_id):
     dell = alu_id
     del_aluno = conn.cursor.execute('DELETE FROM tb_alunos WHERE alu_id = (?)', (dell,))
     return redirect(url_for('view_alunos'))
+
+@app.route('/<int:alu_id>/editar', methods= ['POST'])
+def edit(alu_id):
+
+    alunos = conn.cursor.execute('SELECT alu_id FROM tb_alunos WHERE alu_id == ?', str((alu_id))).fetchall()
+
+    if request.method == 'POST':
+        novonome = request.form.get('nomenovo')
+        novoemail = request.form.get('emailnovo')
+        novotelefone = request.form.get('telefonenovo')
+        
+        conn.cursor.execute('UPDATE tb_alunos SET alu_nome = (?), alu_email = (?), alu_telefone = (?) WHERE alu_id = (?)', (novonome, novoemail, novotelefone, alu_id))
+        return(redirect('view_alunos'))
+    
+    return render_template('edit.html', aluno = alunos)

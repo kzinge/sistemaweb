@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block form %}
-<form action="" method="post">
+<form action="{{url_for('cadastrar')}}" method="post">
     <label for="alunome">Digite o nome do estudante:</label>
     <input type="text" name="alunome" id="alunome" placeholder="Nome">
     <label for="aluemail">Digite o e-mail do estudante:</label>

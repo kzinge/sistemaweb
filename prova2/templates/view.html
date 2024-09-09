@@ -26,7 +26,10 @@
         Telefone: {{aluno['alu_telefone']}}
         <form action="{{url_for('deletar', alu_id = aluno['alu_id'])}}" method="post">
             <input type="submit" value="Cancelar Matrícula">
-        </form> <!--Aqui irei exibir o telefone do aluno-->
+        </form>
+        <form action="{{url_for('edit', alu_id = aluno['alu_id'])}}" method="post">
+            <input type="submit" value="Editar">
+        </form>  <!--Aqui irei exibir o telefone do aluno-->
     </li>
 
     {% endfor %}
