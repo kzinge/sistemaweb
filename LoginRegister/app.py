@@ -1,6 +1,7 @@
 from flask import Flask, session, request, \
     render_template, url_for, redirect, flash
 from bib import Conexao
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 conn = Conexao('banco.db')
@@ -25,7 +26,8 @@ def login():
     if 'user' in session:
         return redirect (url_for('dash')) #vai pra o dashboard
 
-    if request.method == 'GET':
+    # se não estiver logado
+    elif request.method == 'GET':
         return render_template('login.html')
     else:
         nome = request.form['nome']
@@ -33,7 +35,7 @@ def login():
         usuarios = conn.cursor.execute('SELECT usu_nome, usu_senha FROM tb_usuarios').fetchall()
 
         for usuario in usuarios:
-            if usuario[0] == nome and usuario[1] == senha:
+            if usuario[0] == nome and check_password_hash(usuario[1], senha): #verifica se a senha enviada é igual a criptografia
                 session['user'] = nome
                 return redirect(url_for('dash'))
             
@@ -48,12 +50,13 @@ def register():
     if 'user' in session:
         return redirect (url_for('dash')) #vai pra o dashboard
 
-    if request.method == 'GET':
+    # se não estiver logado
+    elif request.method == 'GET':
         return render_template('register.html')
     else:
         
         nome = request.form['nome']
-        senha = request.form['senha']
+        senha = generate_password_hash(request.form['senha']) #criptografar senha
         usuario = conn.cursor.execute('SELECT usu_nome FROM tb_usuarios WHERE usu_nome = (?)', (nome,)).fetchall()
         
         if not usuario:
