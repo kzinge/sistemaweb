@@ -1,0 +1,24 @@
+{% extends 'layouts/auth.html' %}
+
+{% block page_tigle %}
+Nova Notícia
+{% endblock %}
+
+{% block form %}
+<h2>Nova Notícia</h2>
+<form action="{{url_for('new.newnotice')}}" method="post">
+    <div class="group">
+        <label for="titulo">Título</label>
+        <input type="text" name="titulo" placeholder="Título">
+    </div>
+    <div class="group">
+        <label for="data">Data</label>
+        <input type="date" name="data" id="data">
+    </div>                
+    <div class="group">
+        <label for="desc">Descrição</label>
+        <textarea name="descricao" id="desc" placeholder="Qual a nova notícia?" rows="5" cols="30"></textarea>
+    </div>
+    <input type="submit" value="Enviar">
+</form> 
+{% endblock %}

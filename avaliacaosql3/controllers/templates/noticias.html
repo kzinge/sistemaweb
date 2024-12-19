@@ -1,0 +1,29 @@
+{% extends 'layouts/layout.html' %}
+
+{% block page_title %}
+    Usuários
+{% endblock %}
+
+{% block content %}
+
+<div class="nots">
+    <div class="page-header">
+        <h1>
+            Notícias
+        </h1>
+        <div class="links">
+            <a href="{{url_for('new.newnotice')}}">Nova Notícia</a>
+            <a href="{{url_for('user.users')}}">Ver Usuários</a>
+        </div>
+    </div>
+    {%for noticia, user in noticias %}
+    <div class="user-not">
+        <h1>{{noticia.titulo}}</h1>
+        <h6>{{noticia.data}}</h6>
+        <p>{{noticia.descricao}}</p>
+        <h6>{{user}}</h6>
+    </div>
+    {%endfor%}
+</div>
+    
+{% endblock %}
