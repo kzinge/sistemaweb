@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{{url_for('cadastrar')}}">Cadastrar Clientes</a>
+    <a href="{{url_for('cadastrar_veiculos')}}">Cadastrar veiculos</a>
+    <a href="{{url_for('locacao')}}">Cadastrar Locação</a>
+
+    <h1>CLIENTES--------------------</h1>
+    <div class="clientes">
+        {% for cliente in clientes %}
+            <h5>{{cliente.nome}}</h5>
+        {%endfor%}
+    </div>
+
+    <h1>VEICULOS--------------------</h1>
+    <div class="veiculos">
+        {% for veiculo in veiculos  %}
+            <h5>{{veiculo.nome}}</h5>
+        {%endfor%}
+    </div>
+
+    <h1>LOCAÇÕES--------------------</h1>
+    <div class="locacoes">
+        {% for locacao in locacoes %}
+            <h5>{{locacao.cliente.nome}} locou {{locacao.veiculo.nome}} no dia {{locacao.data}}</h5>
+        {%endfor%}
+    </div>
+</body>
+</html>
